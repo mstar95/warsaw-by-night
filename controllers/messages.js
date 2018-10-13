@@ -27,9 +27,7 @@ const translateController = require("./translator");
 const sendResponse = (senderId, text) => {
   switch (text) {
     case Intences.getEvents:
-      activity.activity(null, (activity) => {
-        sendTextMessage(senderId, activity);
-      });
+      sendTextMessage(senderId, activity.activity({}));
       sendTextMessage(senderId, sentences.purposeQuestions[Math.floor(Math.random()*sentences.purposeQuestions.length)]);
       break;
     case Intences.getWeather:
