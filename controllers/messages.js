@@ -4,6 +4,7 @@ const FACEBOOK_ACCESS_TOKEN = "EAAEw3sKwE2gBAOmuqaHLZAsLco9lhBAZCLa9wtOnPEh6tumZ
 const request = require("request");
 
 const Intences = {getEvents: "intent_Event", getWeather: "intent_Weather"};
+const purposeQuestions = ["Co chciałbyś robić?", "Masz na coś ochotę?", "Masz jakieś preferencje?"];
 
 const sendTextMessage = (senderId, text) => {
   request({
@@ -23,12 +24,13 @@ const sendResponse = (text, senderId) => {
   switch (text) {
     case Intences.getEvents:
       sendTextMessage(senderId, "ListaEventów");
+      sendTextMessage(senderId, purposeQuestions[Math.floor(Math.random()*purposeQuestions.length)]);
       break;
     case Intences.getWeather:
       sendTextMessage(senderId, "Pogoda");
       break;
     default:
-      translateController.translateText(result, 'pl', (translateMessage2) => {
+      translateController.translateText(text, 'pl', (translateMessage2) => {
         sendTextMessage(senderId, translateMessage2);
       });
   }
