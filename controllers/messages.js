@@ -20,11 +20,11 @@ const translateController = require("./translator");
 const sendMessageToFlow = (event) => {
   const message = event.message.text;
   const senderId = event.sender.id;
-  translateController.translateText(message, (translateMessage) => {
+  translateController.translateText(message, 'en', (translateMessage) => {
     const apiaiSession = apiAiClient.textRequest(translateMessage, {sessionId: "bogdan_bot"});
     apiaiSession.on("response", (response) => {
       const result = response.result.fulfillment.speech;
-      translateController.translateText(result, (translateMessage2) => {
+      translateController.translateText(result, 'pl', (translateMessage2) => {
         sendTextMessage(senderId, translateMessage2);
       });
     });
