@@ -1,9 +1,7 @@
-const translate = require('google-translate-api');
+const googleTranslate = require('google-translate')("AIzaSyAdVQBL85b3bdQZlWK9IFpkn8OKVu4ynGo ");
 
 exports.translateText = (text, callback) => {
-  translate(text, {to: 'en'}).then(res => {
-    callback(res.text)
-  }).catch(err => {
-    console.error(err);
+  googleTranslate.translate(text, 'en', (err, translation) => {
+    callback(translation.translatedText)
   });
 };

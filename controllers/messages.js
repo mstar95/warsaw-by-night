@@ -15,6 +15,8 @@ const sendTextMessage = (senderId, text) => {
 });
 };
 
+const translateController = require("./translator");
+
 const sendMessageToFlow = (event) => {
   const message = event.message.text;
   const senderId = event.sender.id;
@@ -22,14 +24,14 @@ const sendMessageToFlow = (event) => {
     const apiaiSession = apiAiClient.textRequest(translateMessage, {sessionId: "bogdan_bot"});
     apiaiSession.on("response", (response) => {
       const result = response.result.fulfillment.speech;
-      sendTextMessage(senderId, result);
+      translateController.translateText(result, (translateMessage2) => {
+        sendTextMessage(senderId, translateMessage2);
+      });
     });
     apiaiSession.on("error", error => console.log(error));
     apiaiSession.end();
   })
 };
-
-const translateController = require("./translator");
 
 exports.message = (req, res) => {
 
