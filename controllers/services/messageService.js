@@ -11,12 +11,10 @@ const sendMessage = (senderId, message) => {
             message,
         }
     });
-    console.log(res)
 };
 
-exports.sendUrlMessage = (senderId, text, url) => {
-    const struct = urlStruct(text, url)
-    console.log(text, url)
+exports.sendUrlMessage = (senderId, text, url, img) => {
+    const struct = urlStruct(text, url, img)
     sendMessage(senderId, struct)
 };
 
