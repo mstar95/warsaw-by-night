@@ -28,7 +28,7 @@ const sendResponse = (senderId, text) => {
   switch (text) {
     case Intences.getEvents:
       console.log(activity.activity({}));
-      sendTextMessage(senderId, activity.activity({}));
+      sendTextMessage(senderId, activity.activity({}).path;
       sendTextMessage(senderId, sentences.purposeQuestions[Math.floor(Math.random()*sentences.purposeQuestions.length)]);
       break;
     case Intences.getWeather:
