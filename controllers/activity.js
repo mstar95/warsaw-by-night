@@ -10,9 +10,9 @@ exports.activity = (data) => {
     const query = { ...userTags, ...request };
     // Respond with 200 OK and challenge token from the request
     const results = activities.map(activity => ({ activity, score: scoreActivity(activity.tags, query) }))
+    
 
-
-    return results[0];
+    return results[0].activity;
 
 };
 
