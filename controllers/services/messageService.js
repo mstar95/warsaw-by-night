@@ -29,8 +29,8 @@ const urlStruct = (text, url, img) => ({
             "template_type": "media",
             "elements": [
                 {
-                    "template_type": "media",
-                    "image_url": img,
+                    "media_type": "image",
+                    "url": img,
                     "buttons": [ {
                         "type": "web_url",
                         "url": url,
