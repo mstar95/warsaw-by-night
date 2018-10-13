@@ -39,13 +39,17 @@ const sendResponse = (text, senderId) => {
 const sendMessageToFlow = (event) => {
   const message = event.message.text;
   const senderId = event.sender.id;
-  const apiaiSession = apiAiClient.textRequest(message, {sessionId: "bogdan_bot"});
-  apiaiSession.on("response", (response) => {
-    const result = response.result.fulfillment.speech;
-    sendTextMessage(senderId, result);
-  });
-  apiaiSession.on("error", error => console.log(error));
-  apiaiSession.end();
+  translateController.translateText(message, 'en', (translateMessage) => {
+    const apiaiSession = apiAiClient.textRequest(translateMessage, {sessionId: "bogdan_bot"});
+    apiaiSession.on("response", (response) => {
+      const result = response.result.fulfillment.speech;
+      translateController.translateText(result, 'pl', (translateMessage2) => {
+        sendTextMessage(senderId, translateMessage2);
+      });
+    });
+    apiaiSession.on("error", error => console.log(error));
+    apiaiSession.end();
+  })
 };
 
 translateController.translateText("Cześć", 'en', (translateMessage) => {
