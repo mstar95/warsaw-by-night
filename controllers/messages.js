@@ -20,7 +20,7 @@ const sendTextMessage = (senderId, text) => {
 
 const translateController = require("./translator");
 
-const sendResponse = (text, senderId) => {
+const sendResponse = (senderId, text) => {
   switch (text) {
     case Intences.getEvents:
       sendTextMessage(senderId, "ListaEventów");
@@ -30,8 +30,8 @@ const sendResponse = (text, senderId) => {
       sendTextMessage(senderId, "Pogoda");
       break;
     default:
-      translateController.translateText(text, 'pl', (translateMessage2) => {
-        sendTextMessage(senderId, translateMessage2);
+      translateController.translateText(text, 'pl', (translateMessage) => {
+        sendTextMessage(senderId, translateMessage);
       });
   }
 };
@@ -43,9 +43,7 @@ const sendMessageToFlow = (event) => {
     const apiaiSession = apiAiClient.textRequest(translateMessage, {sessionId: "bogdan_bot"});
     apiaiSession.on("response", (response) => {
       const result = response.result.fulfillment.speech;
-      translateController.translateText(result, 'pl', (translateMessage2) => {
-        sendTextMessage(senderId, translateMessage2);
-      });
+      sendResponse(senderId, result);
     });
     apiaiSession.on("error", error => console.log(error));
     apiaiSession.end();
