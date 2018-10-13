@@ -1,7 +1,5 @@
 const API_AI_TOKEN = "f29b5e09eb8147a5b760513faf635c5d";
 const apiAiClient = require("apiai")(API_AI_TOKEN);
-const FACEBOOK_ACCESS_TOKEN = "EAAEw3sKwE2gBAOmuqaHLZAsLco9lhBAZCLa9wtOnPEh6tumZCc9RbLqH35sb3tv6Ce1hyZBAG5fISskynNgoO8DxCbZC0p4WTkHrktQqhzS5IiJHXn096jmN925bZA4WPvf6QoQYBImHCXBK0wOzZBHXAjeYwiUZAPsbkKMCbwZAKHQZDZD";
-const request = require("request");
 
 const Intences = {getEvents: "intent_Event", getWeather: "intent_Weather"};
 const PurposeIntences = {purpose_accept: "purpose_accept", purpose_decline: "purpose_decline", purpose_proposition: "purpose_proposition"};
