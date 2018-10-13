@@ -4,7 +4,8 @@ const FACEBOOK_ACCESS_TOKEN = "EAAEw3sKwE2gBAOmuqaHLZAsLco9lhBAZCLa9wtOnPEh6tumZ
 const request = require("request");
 
 const Intences = {getEvents: "intent_Event", getWeather: "intent_Weather"};
-const purposeQuestions = ["Co chciałbyś robić?", "Masz na coś ochotę?", "Masz jakieś preferencje?"];
+const PurposeIntences = {purpose_accept: "purpose_accept", purpose_decline: "purpose_decline"};
+const sentences = require('./data/sentences');
 
 const sendTextMessage = (senderId, text) => {
   request({
@@ -20,18 +21,30 @@ const sendTextMessage = (senderId, text) => {
 
 const translateController = require("./translator");
 
-const sendResponse = (text, senderId) => {
+const sendResponse = (senderId, text) => {
   switch (text) {
     case Intences.getEvents:
       sendTextMessage(senderId, "ListaEventów");
-      sendTextMessage(senderId, purposeQuestions[Math.floor(Math.random()*purposeQuestions.length)]);
+      sendTextMessage(senderId, sentences.purposeQuestions[Math.floor(Math.random()*sentences.purposeQuestions.length)]);
       break;
     case Intences.getWeather:
       sendTextMessage(senderId, "Pogoda");
       break;
+    case PurposeIntences.purpose_accept:
+      if(Math.random() > 0.3) {
+        sendTextMessage(senderId, sentences.expressionSentences_OK[Math.floor(Math.random() * sentences.expressionSentences_OK.length)]);
+      }
+      sendTextMessage(senderId, sentences.purpose_1_Questions[Math.floor(Math.random()*sentences.purpose_1_Questions.length)]);
+      break;
+    case PurposeIntences.purpose_decline:
+      if(Math.random() > 0.5) {
+        sendTextMessage(senderId, sentences.expressionSentences_NOK[Math.floor(Math.random() * sentences.expressionSentences_NOK.length)]);
+      }
+      sendTextMessage(senderId, sentences.purpose_1_Questions[Math.floor(Math.random()*sentences.purpose_1_Questions.length)]);
+      break;
     default:
-      translateController.translateText(text, 'pl', (translateMessage2) => {
-        sendTextMessage(senderId, translateMessage2);
+      translateController.translateText(text, 'pl', (translateMessage) => {
+        sendTextMessage(senderId, translateMessage);
       });
   }
 };
@@ -43,12 +56,16 @@ const sendMessageToFlow = (event) => {
     const apiaiSession = apiAiClient.textRequest(translateMessage, {sessionId: "bogdan_bot"});
     apiaiSession.on("response", (response) => {
       const result = response.result.fulfillment.speech;
-      sendResponse(result, senderId);
+      sendResponse(senderId, result);
     });
     apiaiSession.on("error", error => console.log(error));
     apiaiSession.end();
   })
 };
+
+translateController.translateText("Cześć", 'en', (translateMessage) => {
+  console.log(translateMessage)
+});
 
 exports.message = (req, res) => {
 
