@@ -43,8 +43,9 @@ const sendMessageToFlow = (event) => {
     const apiaiSession = apiAiClient.textRequest(translateMessage, {sessionId: "bogdan_bot"});
     apiaiSession.on("response", (response) => {
       const result = response.result.fulfillment.speech;
-      sendTextMessage(senderId, "Ty chuju");
-      //sendResponse(result, senderId);
+      translateController.translateText(result, 'pl', (translateMessage2) => {
+        sendTextMessage(senderId, translateMessage2);
+      });
     });
     apiaiSession.on("error", error => console.log(error));
     apiaiSession.end();
