@@ -7,11 +7,12 @@ exports.activity = (req, res) => {
 
     const user = userDb.getUser("111")
     const userTags = Object.entries(user.tags).map(([key, val]) => ({ [key]: val.val }))
-    const query = { ...userTags, ...request }
+    const query = { ...userTags, ...request };
     // Respond with 200 OK and challenge token from the request
     const results = activities.map(activity => ({ activity, score: scoreActivity(activity.tags, query) }))
 
-    //  res.status(200).send("XD");
+
+    res.status(200).send(results[0]);
 
 };
 
