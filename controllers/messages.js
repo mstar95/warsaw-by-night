@@ -10,16 +10,20 @@ const HappinesIntences = {happinnes: "happinnes"};
 const sentences = require('./data/sentences');
 const activity = require('./activity');
 
-const sendTextMessage = (senderId, text) => {
+const sendMessage = (senderId, message) => {
   request({
     url: "https://graph.facebook.com/v2.6/me/messages",
     qs: { access_token: FACEBOOK_ACCESS_TOKEN },
   method: "POST",
   json: {
     recipient: { id: senderId },
-    message: { text },
+    message,
   }
 });
+};
+
+const sendTextMessage = (senderId, text) => {
+  sendMessage(senderId, { text })
 };
 
 const translateController = require("./translator");
