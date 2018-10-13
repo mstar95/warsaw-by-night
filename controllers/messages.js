@@ -16,16 +16,20 @@ const sendTextMessage = (senderId, text) => {
 };
 
 const sendMessageToFlow = (event) => {
-  const senderId = event.sender.id;
   const message = event.message.text;
-  const apiaiSession = apiAiClient.textRequest(message, {sessionId: "bogdan_bot"});
-  apiaiSession.on("response", (response) => {
-    const result = response.result.fulfillment.speech;
-    sendTextMessage(senderId, result);
-  });
-  apiaiSession.on("error", error => console.log(error));
-  apiaiSession.end();
+  const senderId = event.sender.id;
+  translateController.translateText(message, (translateMessage) => {
+    const apiaiSession = apiAiClient.textRequest(translateMessage, {sessionId: "bogdan_bot"});
+    apiaiSession.on("response", (response) => {
+      const result = response.result.fulfillment.speech;
+      sendTextMessage(senderId, result);
+    });
+    apiaiSession.on("error", error => console.log(error));
+    apiaiSession.end();
+  })
 };
+
+const translateController = require("./translator");
 
 exports.message = (req, res) => {
 
@@ -41,7 +45,6 @@ exports.message = (req, res) => {
       // Get the webhook event. entry.messaging is an array, but
       // will only ever contain one event, so we get index 0
       let webhook_event = entry.messaging[0];
-      console.log(webhook_event);
       sendMessageToFlow(webhook_event);
 
     });
