@@ -1,23 +1,9 @@
 [
     {
-        "end_time": "2018-10-14T21:00:00+0200",
-        "start_time": "2018-10-13T10:00:00+0200",
-        "name": "WawCode - Hackathon 24h - Startberry",
-        "address": "Grochowska 306/308",
-        "type": "event",
-        "id": "222",
-        "path": "https://www.facebook.com/piwpawfoksal/",
-        "img": "https://www.facebook.com/piwpawfoksal/photos/a.492158654245863/492158660912529/?type=1&theater",
-        "tags": {
-            "culture": 0.3,
-            "fun": 0.6,
-            "popularity": 0.9,
-            "sadness": 0
-        }
-    },
-    {
         "start_time": "2018-10-13T10:00:00+0200",
         "name": "PiwPaw Foksal",
+        "path": "https://www.facebook.com/piwpawfoksal/",
+        "img": "https://www.facebook.com/piwpawfoksal/photos/a.492158654245863/492158660912529/?type=1&theater",
         "address": "Foksal 16",
         "type": "place",
         "tags": {
@@ -25,6 +11,20 @@
             "fun": 0.6,
             "popularity": 0.9,
             "party": 0.7
+        }
+    },
+    {
+        "end_time": "2018-10-14T21:00:00+0200",
+        "start_time": "2018-10-13T10:00:00+0200",
+        "name": "WawCode - Hackathon 24h - Startberry",
+        "address": "Grochowska 306/308",
+        "type": "event",
+        "id": "222",
+        "tags": {
+            "culture": 0.3,
+            "fun": 0.6,
+            "popularity": 0.9,
+            "sadness": 0
         }
     },
     {
