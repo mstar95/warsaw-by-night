@@ -26,16 +26,17 @@ const urlStruct = (text, url, img) => ({
     "attachment": {
         "type": "template",
         "payload": {
-            "template_type": "generic",
+            "template_type": "media",
             "elements": [
                 {
-                    "title": text,
+                    "template_type": "media",
                     "image_url": img,
-                    "default_action": {
+                    "buttons": [ {
                         "type": "web_url",
                         "url": url,
                         "webview_height_ratio": "tall",
-                    }
+                        "title": text,
+                    }]
                 }
             ]
         }
