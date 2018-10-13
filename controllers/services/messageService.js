@@ -34,5 +34,6 @@ const urlStruct = (text, url) => ({
                 }
             ]
         }
-    })
+    }
+})
 
