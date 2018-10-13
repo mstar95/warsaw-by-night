@@ -1,3 +1,32 @@
+const API_AI_TOKEN = "f29b5e09eb8147a5b760513faf635c5d";
+const apiAiClient = require("apiai")(API_AI_TOKEN);
+const FACEBOOK_ACCESS_TOKEN = "EAAEw3sKwE2gBAOmuqaHLZAsLco9lhBAZCLa9wtOnPEh6tumZCc9RbLqH35sb3tv6Ce1hyZBAG5fISskynNgoO8DxCbZC0p4WTkHrktQqhzS5IiJHXn096jmN925bZA4WPvf6QoQYBImHCXBK0wOzZBHXAjeYwiUZAPsbkKMCbwZAKHQZDZD";
+const request = require("request");
+
+const sendTextMessage = (senderId, text) => {
+  request({
+    url: "https://graph.facebook.com/v2.6/me/messages",
+    qs: { access_token: FACEBOOK_ACCESS_TOKEN },
+  method: "POST",
+  json: {
+    recipient: { id: senderId },
+    message: { text },
+  }
+});
+};
+
+const sendMessageToFlow = (event) => {
+  const senderId = event.sender.id;
+  const message = event.message.text;
+  const apiaiSession = apiAiClient.textRequest(message, {sessionId: "bogdan_bot"});
+  apiaiSession.on("response", (response) => {
+    const result = response.result.fulfillment.speech;
+    sendTextMessage(senderId, result);
+  });
+  apiaiSession.on("error", error => console.log(error));
+  apiaiSession.end();
+};
+
 exports.message = (req, res) => {
 
   // Parse the request body from the POST
@@ -13,6 +42,7 @@ exports.message = (req, res) => {
       // will only ever contain one event, so we get index 0
       let webhook_event = entry.messaging[0];
       console.log(webhook_event);
+      sendMessageToFlow(webhook_event);
 
     });
 
@@ -24,4 +54,4 @@ exports.message = (req, res) => {
     res.sendStatus(404);
   }
 
-}
+};
