@@ -10,21 +10,7 @@ const HappinesIntences = {happinnes: "happinnes"};
 const sentences = require('./data/sentences');
 const activity = require('./activity');
 
-const sendMessage = (senderId, message) => {
-  request({
-    url: "https://graph.facebook.com/v2.6/me/messages",
-    qs: { access_token: FACEBOOK_ACCESS_TOKEN },
-  method: "POST",
-  json: {
-    recipient: { id: senderId },
-    message,
-  }
-});
-};
-
-const sendTextMessage = (senderId, text) => {
-  sendMessage(senderId, { text })
-};
+const {sendTextMessage, sendUrlMessage} = require('./services/messageService');
 
 const translateController = require("./translator");
 
@@ -32,8 +18,8 @@ const sendResponse = (senderId, text) => {
   switch (text) {
     case Intences.getEvents:
       console.log(activity.activity({}));
-      console.log(senderId, activity.activity({}).path);
-      sendTextMessage(senderId, activity.activity({}).path);
+      const activityData = activity.activity({})
+      sendUrlMessage(senderId, activityData.name, activityData.path);
       sendTextMessage(senderId, sentences.purposeQuestions[Math.floor(Math.random()*sentences.purposeQuestions.length)]);
       break;
     case Intences.getWeather:
