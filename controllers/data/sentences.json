@@ -1,7 +1,7 @@
 {
-  "purposeQuestions": ["Co chciałbyś robić?", "Masz na coś ochotę?", "Masz jakieś preferencje?"],
-  "expressionSentences_OK": ["Super!", ":)", "Wspaniale!", "Super :)", "OK", "(y)"],
-  "expressionSentences_NOK": ["Ok", ":("],
-  "purpose_1_Questions": ["Co chciałbyś robić?", "Co?", "Powiedz co masz na myśli"],
+  "purposeQuestions": ["Co chciałbyś robić?", "Masz na coś ochotę?", "Masz jakieś preferencje?", "Myślałeś o czymś?"],
+  "expressionSentences_OK": ["Super!", ":)", "Wspaniale!", "Super :)", "OK", "(y)", "Doskonale :)", "Doskonale!"],
+  "expressionSentences_NOK": ["Ok", ":(", "Spróbuję coś znaleźć"],
+  "purpose_1_Questions": ["Co chciałbyś robić?", "Co?", "Powiedz, co masz na myśli"],
   "happines_Questions": ["Jak się masz?", "Jak się czujesz?", "W jakim jesteś humorze?", "Jak leci?"]
 }

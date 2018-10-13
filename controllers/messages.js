@@ -12,11 +12,9 @@ const {sendTextMessage, sendUrlMessage} = require('./services/messageService');
 
 const translateController = require("./translator");
 
-const sendResponse = (senderId, text) => {
+const sendResponse = (senderId, text, date, happinnes) => {
   switch (text) {
     case Intences.getEvents:
-      const activityData = activity.activity({})
-      sendUrlMessage(senderId, activityData.name, activityData.path, activityData.img);
       sendTextMessage(senderId, sentences.purposeQuestions[Math.floor(Math.random()*sentences.purposeQuestions.length)]);
       break;
     case Intences.getWeather:
@@ -41,7 +39,9 @@ const sendResponse = (senderId, text) => {
       sendTextMessage(senderId, sentences.happines_Questions[Math.floor(Math.random()*sentences.happines_Questions.length)]);
       break;
     case HappinesIntences.happinnes:
-      sendTextMessage(senderId, sentences.happines_Questions[Math.floor(Math.random()*sentences.happines_Questions.length)]);
+      const happinnes = happinnes;
+      const activityData = activity.activity({});
+      sendUrlMessage(senderId, activityData.name, activityData.path, activityData.img);
       break;
     default:
       translateController.translateText(text, 'pl', (translateMessage) => {
@@ -57,8 +57,9 @@ const sendMessageToFlow = (event) => {
     const apiaiSession = apiAiClient.textRequest(translateMessage, {sessionId: "bogdan_bot"});
     apiaiSession.on("response", (response) => {
       const result = response.result.fulfillment.speech;
-      const type = response.result.fulfillment.speech
-      sendResponse(senderId, result);
+      const date = response.result.parameters.date;
+      const happinnes = response.result.parameters.happinnes;
+      sendResponse(senderId, result, date, happinnes);
     });
     apiaiSession.on("error", error => console.log(error));
     apiaiSession.end();
