@@ -4,11 +4,8 @@ const FACEBOOK_ACCESS_TOKEN = "EAAEw3sKwE2gBAOmuqaHLZAsLco9lhBAZCLa9wtOnPEh6tumZ
 const request = require("request");
 
 const Intences = {getEvents: "intent_Event", getWeather: "intent_Weather"};
-const purposeQuestions = ["Co chciałbyś robić?", "Masz na coś ochotę?", "Masz jakieś preferencje?"];
-const expressionSentences_OK = ["Super!", ":)", "Wspaniale!", "Super :)", "OK", "(y)"];
-const expressionSentences_NOK = ["Ok", ":("];
-const purpose_1_Questions = ["Co chciałbyś robić?", "Co?", "Powiedz c masz na myśli"];
 const PurposeIntences = {purpose_accept: "purpose_accept", purpose_decline: "purpose_decline"};
+const sentences = require('./data/sentences');
 
 const sendTextMessage = (senderId, text) => {
   request({
@@ -28,22 +25,22 @@ const sendResponse = (senderId, text) => {
   switch (text) {
     case Intences.getEvents:
       sendTextMessage(senderId, "ListaEventów");
-      sendTextMessage(senderId, purposeQuestions[Math.floor(Math.random()*purposeQuestions.length)]);
+      sendTextMessage(senderId, sentences.purposeQuestions[Math.floor(Math.random()*sentences.purposeQuestions.length)]);
       break;
     case Intences.getWeather:
       sendTextMessage(senderId, "Pogoda");
       break;
     case PurposeIntences.purpose_accept:
       if(Math.random() > 0.3) {
-        sendTextMessage(senderId, expressionSentences_OK[Math.floor(Math.random() * expressionSentences_OK.length)]);
+        sendTextMessage(senderId, sentences.expressionSentences_OK[Math.floor(Math.random() * sentences.expressionSentences_OK.length)]);
       }
-      sendTextMessage(senderId, purpose_1_Questions[Math.floor(Math.random()*purpose_1_Questions.length)]);
+      sendTextMessage(senderId, sentences.purpose_1_Questions[Math.floor(Math.random()*sentences.purpose_1_Questions.length)]);
       break;
     case PurposeIntences.purpose_decline:
       if(Math.random() > 0.5) {
-        sendTextMessage(senderId, expressionSentences_NOK[Math.floor(Math.random() * expressionSentences_NOK.length)]);
+        sendTextMessage(senderId, sentences.expressionSentences_NOK[Math.floor(Math.random() * sentences.expressionSentences_NOK.length)]);
       }
-      sendTextMessage(senderId, purpose_1_Questions[Math.floor(Math.random()*purpose_1_Questions.length)]);
+      sendTextMessage(senderId, sentences.purpose_1_Questions[Math.floor(Math.random()*sentences.purpose_1_Questions.length)]);
       break;
     default:
       translateController.translateText(text, 'pl', (translateMessage) => {

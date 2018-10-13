@@ -1,0 +1,6 @@
+{
+  "purposeQuestions": ["Co chciałbyś robić?", "Masz na coś ochotę?", "Masz jakieś preferencje?"],
+  "expressionSentences_OK": ["Super!", ":)", "Wspaniale!", "Super :)", "OK", "(y)"],
+  "expressionSentences_NOK": ["Ok", ":("],
+  "purpose_1_Questions": ["Co chciałbyś robić?", "Co?", "Powiedz co masz na myśli"]
+}
