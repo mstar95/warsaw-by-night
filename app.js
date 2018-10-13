@@ -6,6 +6,7 @@ const
   express = require('express'),
   body_parser = require('body-parser'),
   app = express().use(body_parser.json()); // creates express http server
+  
 
 // Sets server port and logs message on success
 app.listen(process.env.PORT || 1337, () => console.log('webhook is listening'));
@@ -20,3 +21,9 @@ const verificationController = require("./controllers/verification");
 
 // Accepts GET requests at the /webhook endpoint
 app.get('/webhook', verificationController.verfication);
+
+const activityController = require("./controllers/activity");
+
+app.post('/activity',activityController.activity )
+
+activityController.activity()

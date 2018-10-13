@@ -1,0 +1,76 @@
+[
+    {
+        "end_time": "2018-10-14T21:00:00+0200",
+        "start_time": "2018-10-13T10:00:00+0200",
+        "name": "WawCode - Hackathon 24h - Startberry",
+        "address": "Grochowska 306/308",
+        "type": "event",
+        "tags": {
+            "culture": 0.3,
+            "fun": 0.6,
+            "popularity": 0.9,
+            "sadness": 0
+        }
+    },
+    {
+        "start_time": "2018-10-13T10:00:00+0200",
+        "name": "PiwPaw Foksal",
+        "address": "Foksal 16",
+        "type": "place",
+        "tags": {
+            "culture": 0.9,
+            "fun": 0.6,
+            "popularity": 0.9,
+            "party": 0.7
+        }
+    },
+    {
+        "name": "XXXXXXX",
+        "type": "place",
+        "tags": {
+            "culture": 0.2,
+            "fun": 0.3,
+            "popularity": 1,
+            "party": 0.2,
+            "cafe": 0.6
+        }
+    },
+    {
+        "name": "XXXXXXX",
+        "type": "place",
+        "tags": {
+            "culture": 0.2,
+            "music": 0.6,
+            "mass": 0.7
+        }
+    },
+    {
+        "name": "XXXXXXX",
+        "type": "place",
+        "tags": {
+            "fun": 1,
+            "popularity":1
+        }
+    },
+    {
+        "name": "XXXXXXX",
+        "type": "place",
+        "tags": {
+            "culture": 0.9,
+            "green": 0.6,
+            "popularity": 0.9,
+            "party": 0.7
+        }
+    },
+    {
+        "name": "XXXXXXX",
+        "type": "place",
+        "tags": {
+            "culture": 0.9,
+            "fun": 0.6,
+            "popularity": 0.9,
+            "rage": 0.7
+        }
+    }
+    
+]
