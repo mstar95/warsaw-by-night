@@ -19,7 +19,7 @@ const sendTextMessage = (senderId, text) => {
 
 const translateController = require("./translator");
 
-const sendResponse = (text) => {
+const sendResponse = (text, senderId) => {
   switch (text) {
     case Intences.getEvents:
       sendTextMessage(senderId, "ListaEventów");
@@ -41,7 +41,7 @@ const sendMessageToFlow = (event) => {
     const apiaiSession = apiAiClient.textRequest(translateMessage, {sessionId: "bogdan_bot"});
     apiaiSession.on("response", (response) => {
       const result = response.result.fulfillment.speech;
-      sendResponse(result);
+      sendResponse(result, senderId);
     });
     apiaiSession.on("error", error => console.log(error));
     apiaiSession.end();
