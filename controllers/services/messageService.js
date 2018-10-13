@@ -15,8 +15,8 @@ const sendMessage = (senderId, message) => {
 
 exports.sendUrlMessage = (senderId, text, url) => {
     const struct = urlStruct(text, url)
-    console.log(struct.toString())
-    sendMessage(senderId, struct.toString())
+    console.log(text, url)
+    sendMessage(senderId, struct)
 };
 
 exports.sendTextMessage = (senderId, text) => {
