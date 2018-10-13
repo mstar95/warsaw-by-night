@@ -3,6 +3,9 @@ const apiAiClient = require("apiai")(API_AI_TOKEN);
 const FACEBOOK_ACCESS_TOKEN = "EAAEw3sKwE2gBAOmuqaHLZAsLco9lhBAZCLa9wtOnPEh6tumZCc9RbLqH35sb3tv6Ce1hyZBAG5fISskynNgoO8DxCbZC0p4WTkHrktQqhzS5IiJHXn096jmN925bZA4WPvf6QoQYBImHCXBK0wOzZBHXAjeYwiUZAPsbkKMCbwZAKHQZDZD";
 const request = require("request");
 
+const Intences = {getEvents: "intent_Event", getWeather: "intent_Weather"};
+const purposeQuestions = ["Co chciałbyś robić?", "Masz na coś ochotę?", "Masz jakieś preferencje?"];
+
 const sendTextMessage = (senderId, text) => {
   request({
     url: "https://graph.facebook.com/v2.6/me/messages",
@@ -17,6 +20,22 @@ const sendTextMessage = (senderId, text) => {
 
 const translateController = require("./translator");
 
+const sendResponse = (text, senderId) => {
+  switch (text) {
+    case Intences.getEvents:
+      sendTextMessage(senderId, "ListaEventów");
+      sendTextMessage(senderId, purposeQuestions[Math.floor(Math.random()*purposeQuestions.length)]);
+      break;
+    case Intences.getWeather:
+      sendTextMessage(senderId, "Pogoda");
+      break;
+    default:
+      translateController.translateText(text, 'pl', (translateMessage2) => {
+        sendTextMessage(senderId, translateMessage2);
+      });
+  }
+};
+
 const sendMessageToFlow = (event) => {
   const message = event.message.text;
   const senderId = event.sender.id;
@@ -24,9 +43,7 @@ const sendMessageToFlow = (event) => {
     const apiaiSession = apiAiClient.textRequest(translateMessage, {sessionId: "bogdan_bot"});
     apiaiSession.on("response", (response) => {
       const result = response.result.fulfillment.speech;
-      translateController.translateText(result, 'pl', (translateMessage2) => {
-        sendTextMessage(senderId, translateMessage2);
-      });
+      sendResponse(result, senderId);
     });
     apiaiSession.on("error", error => console.log(error));
     apiaiSession.end();
