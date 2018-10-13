@@ -2,7 +2,7 @@ const FACEBOOK_ACCESS_TOKEN = "EAAEw3sKwE2gBAOmuqaHLZAsLco9lhBAZCLa9wtOnPEh6tumZ
 const request = require("request");
 
 const sendMessage = (senderId, message) => {
-    request({
+    const res = request({
         url: "https://graph.facebook.com/v2.6/me/messages",
         qs: { access_token: FACEBOOK_ACCESS_TOKEN },
         method: "POST",
@@ -11,6 +11,7 @@ const sendMessage = (senderId, message) => {
             message,
         }
     });
+    console.log(res)
 };
 
 exports.sendUrlMessage = (senderId, text, url) => {
