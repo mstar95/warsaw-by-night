@@ -24,6 +24,9 @@ app.get('/webhook', verificationController.verfication);
 
 const activityController = require("./controllers/activity");
 
+const feedbackController = require("./controllers/feedback");
+
 app.post('/activity',activityController.activity )
 
 activityController.activity()
+feedbackController.feedback()

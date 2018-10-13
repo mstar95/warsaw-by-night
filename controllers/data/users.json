@@ -1,0 +1,18 @@
+[
+    {
+        "id": "111",
+        "lastEventId": "222",
+        "tags": {
+            "culture": { "val": 1.0, "rates": 10},
+            "popularity": { "val": 0.2, "rates": 10}
+        }
+    },
+    {
+        "id": "123",
+        "lastEventId": "333",
+        "tags": {
+            "culture": { "val": 0.2, "rates": 10},
+            "popularity": { "val":0.5, "rates": 100}
+        }
+    }
+]
