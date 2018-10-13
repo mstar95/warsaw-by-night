@@ -24,7 +24,7 @@ exports.sendTextMessage = (senderId, text) => {
     sendMessage(senderId, { text })
 };
 
-const urlStruct = (text, url) => ({
+const urlStruct = (text, url, img) => ({
     "attachment": {
         "type": "template",
         "payload": {
@@ -32,7 +32,7 @@ const urlStruct = (text, url) => ({
             "elements": [
                 {
                     "title": text,
-                    "image_url":"http://www.godominion.com/content/images/feature-img-small-appliance-electronics.png",
+                    "image_url": img,
                     "default_action": {
                         "type": "web_url",
                         "url": url,
