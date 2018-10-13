@@ -39,7 +39,7 @@ const sendResponse = (senderId, text, date, happinnes) => {
       sendTextMessage(senderId, sentences.happines_Questions[Math.floor(Math.random()*sentences.happines_Questions.length)]);
       break;
     case HappinesIntences.happinnes:
-      const happinnes = happinnes;
+      const happy = happinnes;
       const activityData = activity.activity({});
       sendUrlMessage(senderId, activityData.name, activityData.path, activityData.img);
       break;
