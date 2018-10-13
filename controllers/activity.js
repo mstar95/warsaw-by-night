@@ -3,7 +3,7 @@ const activities = require('./data/activity')
 const request = require('./data/request')
 const userDb = require('./data/userDb')
 
-exports.activity = (req, res) => {
+exports.activity = (data) => {
 
     const user = userDb.getUser("111")
     const userTags = Object.entries(user.tags).map(([key, val]) => ({ [key]: val.val }))
@@ -12,7 +12,7 @@ exports.activity = (req, res) => {
     const results = activities.map(activity => ({ activity, score: scoreActivity(activity.tags, query) }))
 
 
-    res.status(200).send(results[0]);
+    return results[0];
 
 };
 
