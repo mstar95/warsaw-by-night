@@ -32,6 +32,7 @@ const urlStruct = (text, url) => ({
             "elements": [
                 {
                     "title": text,
+                    "image_url":"http://www.godominion.com/content/images/feature-img-small-appliance-electronics.png",
                     "default_action": {
                         "type": "web_url",
                         "url": url,
