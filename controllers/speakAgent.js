@@ -21,7 +21,7 @@ exports.tell = (senderId, text, parameters) => {
   let activityData;
   switch (text) {
     case Intences.getEvents:
-      users[senderId].mood = {tag: "", mood: 0};
+      users[senderId] = {tag: "", mood: 0};
       sendTextMessage(senderId, randomSentence(sentences.happines_Questions));
       break;
     case Intences.getWeather:
