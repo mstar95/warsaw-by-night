@@ -21,6 +21,7 @@ const randomSentence = (sentences) => {
 
 exports.tell = (senderId, text, parameters) => {
   let activityData;
+  console.log(text);
   switch (text) {
     case Intences.meme:
       const meme = randomSentence(memes);
@@ -48,7 +49,6 @@ exports.tell = (senderId, text, parameters) => {
       break;
     case TagsIntences.tags:
       users[senderId].tag = parameters.tags;
-      console.log(users[senderId]);
       if (Math.random() > 0.7) {
         sendTextMessage(senderId, randomSentence(sentences.expressionSentences_OK));
       }
