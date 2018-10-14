@@ -14,8 +14,8 @@ const sendMessageToFlow = (event) => {
   translateController.translateText(message, 'en', (translateMessage) => {
     if(message === "meme") {
       sendResponse(senderId, "meme", {});
-    }
-    else {
+    } else {
+      console.log(message)
       const apiaiSession = apiAiClient.textRequest(translateMessage, {sessionId: "bogdan_bot"});
       apiaiSession.on("response", (response) => {
         const result = response.result.fulfillment.speech;
