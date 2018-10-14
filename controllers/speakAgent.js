@@ -42,15 +42,21 @@ exports.tell = (senderId, text, parameters) => {
     case PurposeIntences.purpose_accept:
       if (Math.random() > 0.3) {
         sendTextMessage(senderId, randomSentence(sentences.expressionSentences_OK));
+        setTimeout(() =>
+          sendTextMessage(senderId, randomSentence(sentences.purpose_1_Questions)), 100)
+      } else {
+        sendTextMessage(senderId, randomSentence(sentences.purpose_1_Questions));
       }
-      sendTextMessage(senderId, randomSentence(sentences.purpose_1_Questions));
       break;
     case PurposeIntences.purpose_decline:
+      activityData = activity.activity();
       if (Math.random() > 0.5) {
         sendTextMessage(senderId, randomSentence(sentences.expressionSentences_NOK));
+        setTimeout(() =>
+          sendTextMessage(senderId, sendUrlMessage(senderId, activityData.name, activityData.path, activityData.img)), 100)
+      } else {
+        sendUrlMessage(senderId, activityData.name, activityData.path, activityData.img);
       }
-      activityData = activity.activity();
-      sendUrlMessage(senderId, activityData.name, activityData.path, activityData.img);
       break;
     case TagsIntences.tags:
       users[senderId].tag = parameters.tags;
