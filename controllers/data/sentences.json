@@ -2,7 +2,7 @@
   "purposeQuestions": ["Co chciałbyś robić?", "Masz na coś ochotę?", "Masz jakieś preferencje?", "Myślałeś o czymś?"],
   "expressionSentences_OK": ["Super!", ":)", "Wspaniale!", "Super :)", "OK", "(y)", "Doskonale :)", "Doskonale!"],
   "expressionSentences_NOK": ["Ok", ":(", "Spróbuję coś znaleźć"],
-  "purpose_1_Questions": ["Co chciałbyś robić?", "Co?", "Powiedz, co masz na myśli"],
+  "purpose_1_Questions": ["Co chciałbyś robić?", "Co masz na myśli?", "Powiedz, co masz na myśli"],
   "happines_Questions": ["Jak się masz?", "Jak się czujesz?", "W jakim jesteś humorze?", "Jak leci?"],
   "proposition_Questions": ["Co powiesz na to?", "Co o tym myślisz?", "Może to?"],
   "after_approve": ["Mam nadzieję, że będziesz się dobrze bawił.", "Baw się dobrze.", "Mam nadzieję, że miło spędzisz czas"],
