@@ -21,7 +21,8 @@ exports.tell = (senderId, text, parameters) => {
   let activityData;
   switch (text) {
     case Intences.getEvents:
-      sendTextMessage(senderId, randomSentence(sentences.purposeQuestions));
+      users[senderId].mood = {tag: "", mood: 0};
+      sendTextMessage(senderId, randomSentence(sentences.happines_Questions));
       break;
     case Intences.getWeather:
       sendTextMessage(senderId, "Pogoda");
@@ -33,27 +34,21 @@ exports.tell = (senderId, text, parameters) => {
       sendTextMessage(senderId, randomSentence(sentences.purpose_1_Questions));
       break;
     case PurposeIntences.purpose_decline:
-      users[senderId] = {tag: "", mood: 0};
       if (Math.random() > 0.5) {
         sendTextMessage(senderId, randomSentence(sentences.expressionSentences_NOK));
       }
-      sendTextMessage(senderId, randomSentence(sentences.happines_Questions));
+      activityData = activity.activity();
+      sendUrlMessage(senderId, activityData.name, activityData.path, activityData.img);
       break;
-    case PurposeIntences.purpose_proposition:
+    case TagsIntences.tags:
       if (Math.random() > 0.7) {
         sendTextMessage(senderId, randomSentence(sentences.expressionSentences_OK));
       }
-      sendTextMessage(senderId, randomSentence(sentences.happines_Questions));
-      break;
-    case TagsIntences.tags:
-      users[senderId] = {tag: parameters.tags, mood: 0};
-      sendTextMessage(senderId, randomSentence(sentences.happines_Questions));
-      break;
-    case HappinesIntences.happinnes:
-      users[senderId].mood = 0;
       activityData = activity.activity(users[senderId].tag);
       sendUrlMessage(senderId, activityData.name, activityData.path, activityData.img);
-      sendTextMessage(senderId, randomSentence(sentences.proposition_Questions));
+      break;
+    case HappinesIntences.happinnes:
+      sendTextMessage(senderId, randomSentence(sentences.purposeQuestions));
       break;
     case PropositionIntences.proposition_approve:
       sendTextMessage(senderId, randomSentence(sentences.after_approve));
