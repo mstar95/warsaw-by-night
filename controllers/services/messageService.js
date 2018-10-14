@@ -11,6 +11,7 @@ const sendMessage = (senderId, message) => {
             message,
         }
     });
+    console.log(res)
 };
 
 exports.sendUrlMessage = (senderId, text, url, img) => {
