@@ -7,6 +7,8 @@ const sentences = require('./data/sentences');
 
 const {sendTextMessage, sendUrlMessage} = require('./services/messageService');
 
+const translateController = require("./translator");
+
 
 const randomSentence = (sentences) => {
   return sentences[Math.floor(Math.random()*sentences.length)]
