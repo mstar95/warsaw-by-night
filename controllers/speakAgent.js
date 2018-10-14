@@ -1,10 +1,11 @@
-const Intences = {getEvents: "intent_Event", getWeather: "intent_Weather"};
+const Intences = {getEvents: "intent_Event", getWeather: "intent_Weather", meme: "meme"};
 const PurposeIntences = {purpose_accept: "purpose_accept", purpose_decline: "purpose_decline", purpose_proposition: "purpose_proposition"};
 const HappinesIntences = {happinnes: "happinnes"};
 const PropositionIntences = {proposition_disapprove: "proposition_disapprove", proposition_approve: "proposition_approve"};
 const TagsIntences = {tags: "my_tag"};
 
 const sentences = require('./data/sentences');
+const memes = require('./data/memes');
 const activity = require('./activity');
 
 const {sendTextMessage, sendUrlMessage} = require('./services/messageService');
@@ -20,6 +21,10 @@ const randomSentence = (sentences) => {
 exports.tell = (senderId, text, parameters) => {
   let activityData;
   switch (text) {
+    case Intences.meme:
+      const meme = randomSentence(memes);
+      sendUrlMessage(senderId, meme, meme, meme);
+      break;
     case Intences.getEvents:
       users[senderId] = {tag: "", mood: 0};
       sendTextMessage(senderId, randomSentence(sentences.happines_Questions));
