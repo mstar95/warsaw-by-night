@@ -18,6 +18,7 @@ const randomSentence = (sentences) => {
 };
 
 const sendResponse = (senderId, text, date, happinnes) => {
+  let activityData;
   switch (text) {
     case Intences.getEvents:
       sendTextMessage(senderId, randomSentence(sentences.purposeQuestions));
@@ -45,7 +46,7 @@ const sendResponse = (senderId, text, date, happinnes) => {
       break;
     case HappinesIntences.happinnes:
       const happy = happinnes;
-      let activityData = activity.activity({});
+      activityData = activity.activity({});
       sendUrlMessage(senderId, activityData.name, activityData.path, activityData.img);
       sendTextMessage(senderId, randomSentence(sentences.proposition_Questions));
       break;
