@@ -68,6 +68,7 @@ exports.tell = (senderId, text, parameters) => {
       sendUrlMessage(senderId, activityData.name, activityData.path, activityData.img);
       break;
     case HappinesIntences.happinnes:
+      users[senderId].mood = parameters.happinnes;
       sendTextMessage(senderId, randomSentence(sentences.purposeQuestions));
       break;
     case PropositionIntences.proposition_approve:
@@ -75,8 +76,11 @@ exports.tell = (senderId, text, parameters) => {
       sendTextMessage(senderId, randomSentence(sentences.grade_remind));
       break;
     case PropositionIntences.proposition_disapprove:
-      users[senderId].mood = 0;
-      activityData = activity.activity(users[senderId].tag);
+      if(users[senderId].mood < -10) {
+        activityData = activity.activity("rip");
+      } else {
+        activityData = activity.activity(users[senderId].tag);
+      }
       sendTextMessage(senderId, randomSentence(sentences.expressionSentences_NOK));
       sendTextMessage(senderId, randomSentence(sentences.proposition_Questions));
       sendUrlMessage(senderId, activityData.name, activityData.path, activityData.img);
