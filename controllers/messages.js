@@ -66,10 +66,6 @@ const sendMessageToFlow = (event) => {
   })
 };
 
-translateController.translateText("Cześć", 'en', (translateMessage) => {
-  console.log(translateMessage)
-});
-
 exports.message = (req, res) => {
 
   // Parse the request body from the POST
