@@ -13,6 +13,9 @@ const {sendTextMessage, sendUrlMessage} = require('./services/messageService');
 
 const translateController = require("./translator");
 
+
+const userDb = require('./data/userDb')
+
 const users = {};
 
 const randomSentence = (sentences) => {
@@ -29,6 +32,8 @@ exports.tell = (senderId, text, parameters) => {
       break;
     case Intences.getEvents:
       users[senderId] = {tag: "", mood: 0};
+      const user = userDb.getUser("111")
+      user.lastEvents = []
       sendTextMessage(senderId, randomSentence(sentences.happines_Questions));
       break;
     case Intences.getWeather:
@@ -71,13 +76,7 @@ exports.tell = (senderId, text, parameters) => {
       sendUrlMessage(senderId, activityData.name, activityData.path, activityData.img);
       break;
     case GradeIntences.grade:
-      if(parameters.grade > 0) {
-        sendTextMessage(senderId, randomSentence(sentences.expressionSentences_OK));
-      } else {
-        sendTextMessage(senderId, randomSentence(sentences.expressionSentences_NOK));
-      }
       sendTextMessage(senderId, randomSentence(sentences.next_Question));
-      sendTextMessage(senderId, randomSentence(sentences.purpose_1_Questions));
       break;
     default:
       translateController.translateText(text, 'pl', (translateMessage) => {
