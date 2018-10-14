@@ -11,7 +11,10 @@ exports.activity = (placeTag, date, moodOption) => {
     const user = userDb.getUser("111")
     const notVisitedActivities = activities.filter(activity => !user.lastEvents.includes(activity.name))
    
-    const activitiesWithWantedTags = notVisitedActivities.filter(activity => activity.tags.includes(placeTag))
+    let activitiesWithWantedTags = notVisitedActivities.filter(activity => activity.tags.includes(placeTag))
+    if(activitiesWithWantedTags == []) {
+        activitiesWithWantedTags = notVisitedActivities
+    }
     // Respond with 200 OK and challenge token from the request
     const results = activitiesWithWantedTags.map(activity => ({ activity, score: scoreActivity(activity.options, moodOption) }))
     const bestResult = randomElem(nBests(results, 1))
