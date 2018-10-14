@@ -3,7 +3,7 @@
   "expressionSentences_OK": ["Super!", ":)", "Wspaniale!", "Super :)", "OK", "(y)", "Doskonale :)", "Doskonale!"],
   "expressionSentences_NOK": ["Ok", ":(", "Spróbuję coś znaleźć"],
   "purpose_1_Questions": ["Masz jakiś pomysł?", "Co masz na myśli?", "Powiedz, co masz na myśli"],
-  "happines_Questions": ["Jak się masz?", "Jak się czujesz?", "W jakim jesteś humorze?", "Jak leci?"],
+  "happines_Questions": ["W jakim jesteś humorze?"],
   "proposition_Questions": ["Co powiesz na to?", "Co o tym myślisz?", "Może to?"],
   "after_approve": ["Mam nadzieję, że będziesz się dobrze bawił.", "Baw się dobrze.", "Mam nadzieję, że miło spędzisz czas"],
   "grade_remind": ["Nie zapomnij ocenić mojego wyoboru.", "Pamiętaj aby ocenić wybór", "Proszę, po zakończeniu oceń wybór"],
