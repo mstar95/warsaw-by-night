@@ -2,6 +2,7 @@
     {
         "id": "111",
         "lastEventId": "222",
+        "lastEvents": [],
         "options": {
             "culture": {
                 "val":  0.3,
