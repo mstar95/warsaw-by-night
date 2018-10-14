@@ -14,11 +14,31 @@ exports.activity = (placeTag, date, moodOption) => {
 
     // Respond with 200 OK and challenge token from the request
     const results = activitiesWithWantedTags.map(activity => ({ activity, score: scoreActivity(userOptions, activity.options) }))
-    const bestResults = nBests(results, 1)
-    console.log(results)
-    return bestResults[0].activity;
+    const bestResult = randomElem(nBests(results, 1))
+    user.lastEvent = bestResult.activity.name
+    return bestResult.activity;
 
 };
+
+exports.reactivity = (placeTag, date, moodOption) => {
+
+    moodOption = 0;
+    const user = userDb.getUser("111")
+
+    const userOptions = {...user.options, mood: {val: moodOption} }
+    const notLastActivities = activities.filter(activity => activity.name != user.lastEvent)
+    const activitiesWithWantedTags = notLastActivities.filter(activity => activity.tags.includes(placeTag))
+
+    // Respond with 200 OK and challenge token from the request
+    const results = activitiesWithWantedTags.map(activity => ({ activity, score: scoreActivity(userOptions, activity.options) }))
+    const bestResult = randomElem(nBests(results, 2))
+    return bestResult.activity;
+
+};
+
+const randomElem = (sentences) => {
+    return sentences[Math.floor(Math.random()*sentences.length)]
+  };
 
 function scoreActivity (userTags, activityTags) {
     const scores = Object.entries(userTags).map(([tag, val]) => scoreTag(val.val, activityTags[tag]))

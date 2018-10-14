@@ -27,3 +27,11 @@ const activityController = require("./controllers/activity");
 const feedbackController = require("./controllers/feedback");
 
 app.post('/activity',activityController.activity )
+
+console.log(activityController.activity("drink"))
+console.log(activityController.activity("drink"))
+console.log(activityController.activity("drink"))
+console.log(activityController.reactivity("drink"))
+console.log(activityController.reactivity("drink"))
+console.log(activityController.reactivity("drink"))
+console.log(activityController.reactivity("drink"))
