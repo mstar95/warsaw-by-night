@@ -8,9 +8,123 @@
         "type": "place",
         "tags": ["drink", "eat"],
         "options": {
-            "culture": 0.9,
+            "culture": 0.1,
             "popularity": 0.9,
-            "mood": 0
+            "mood": 0,
+            "luxury": 0.6,
+            "atmosfer": 0.2
+        }
+    },
+    {
+        "start_time": "2018-10-13T10:00:00+0200",
+        "name": "Pub student",
+        "path": "https://www.facebook.com/pubstudent/",
+        "img": "https://www.facebook.com/pubstudent/photos/a.192474210886664/1029836540483756/?type=1&theater",
+        "address": "Ludwika Waryńskiego 12",
+        "type": "place",
+        "tags": ["drink", "eat", "music"],
+        "options": {
+            "culture": 0.0,
+            "popularity": 0.7,
+            "mood": 0,
+            "luxury": 0.2,
+            "atmosfer": 0.1
+        }
+    },
+    {
+        "start_time": "2018-10-13T10:00:00+0200",
+        "name": "Hangar 646",
+        "path": "https://www.facebook.com/Hangar646/",
+        "img": "https://www.facebook.com/Hangar646/photos/a.422747311215439/615930385230463/?type=1&theater",
+        "address": "Hangar 646",
+        "type": "place",
+        "tags": ["sport", "competition"],
+        "options": {
+            "culture": 0.1,
+            "popularity": 0.7,
+            "mood": 0,
+            "luxury": 0.5,
+            "atmosfer": 0.1
+        }
+    },
+    {
+        "start_time": "2018-10-13T10:00:00+0200",
+        "name": "Chmielarnia",
+        "path": "https://www.facebook.com/ChmielarniaMultitap/",
+        "img": "https://www.facebook.com/ChmielarniaMultitap/photos/a.444160162344215/1642223499204536/?type=1&theater",
+        "address": "Twarda 42",
+        "type": "place",
+        "tags": ["drink", "eat"],
+        "options": {
+            "culture": 0.2,
+            "popularity": 0.7,
+            "mood": 0,
+            "luxury": 0.5,
+            "atmosfer": 0.3
+        }
+    },
+    {
+        "start_time": "2018-10-13T10:00:00+0200",
+        "name": "Nocny Market ✦ Ostatni Weekend na Głównym",
+        "path": "https://www.facebook.com/events/250148479033969/?event_time_id=250148495700634",
+        "img": "https://www.facebook.com/nocnymarket/photos/gm.250148512367299/652670865133674/?type=3&theater",
+        "address": "Towarowa 3",
+        "type": "event",
+        "tags": ["drink", "eat", "chillout"],
+        "options": {
+            "culture": 0.4,
+            "popularity": 0.7,
+            "mood": 0,
+            "luxury": 0.3,
+            "atmosfer": 0.3
+        }
+    },
+    {
+        "start_time": "2018-10-13T10:00:00+0200",
+        "name": "The Royal Moscow Ballet @Warszawa, Poland",
+        "path": "https://www.facebook.com/events/757935547736374/",
+        "img": "https://www.facebook.com/prestigemjm/photos/gm.757935554403040/1857987767559146/?type=3&theater",
+        "address": "Łazienkowska 6a",
+        "type": "event",
+        "tags": ["music", "dance", "chillout"],
+        "options": {
+            "culture": 1,
+            "popularity": 0.5,
+            "mood": 0,
+            "luxury": 0.6,
+            "atmosfer": 0.8
+        }
+    },
+    {
+        "start_time": "2018-10-13T10:00:00+0200",
+        "name": "Swingowa Niedziela",
+        "path": "https://www.facebook.com/events/329972817737446/?event_time_id=329972957737432",
+        "img": "https://www.facebook.com/lindyhop.warszawa/photos/gm.329973124404082/2300106303351706/?type=3&theater",
+        "address": "Dzik",
+        "type": "event",
+        "tags": ["music", "dance", "chillout", "sport"],
+        "options": {
+            "culture": 0.4,
+            "popularity": 0.9,
+            "mood": 0,
+            "luxury": 0.2,
+            "atmosfer": 0.1
+        }
+    },
+    {
+        "start_time": "2018-10-13T10:00:00+0200",
+        "name": "Kurs konstrukcji bielizny damskiej 60 godz.",
+        "path": "https://www.facebook.com/events/192372711351891/?event_time_id=234098130512682",
+        "img": "https://www.facebook.com/umiemszyc.kurs/photos/gm.207785549810607/801074966759049/?type=3&theater",
+        "address": "Nowy świat",
+        "type": "event",
+        "tags": ["chillout", "sport"],
+        "options": {
+            "culture": 0.8,
+            "popularity": 0.8,
+            "mood": 0,
+            "luxury": 0.5,
+            "atmosfer": 0.1
         }
     },
     {
@@ -26,7 +140,9 @@
         "options": {
             "culture": 0.3,
             "popularity": 0.9,
-            "mood": 0
+            "mood": 0,
+            "luxury": 0.6,
+            "atmosfer": 0.2
         }
     }
 
