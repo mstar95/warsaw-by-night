@@ -41,10 +41,13 @@ exports.tell = (senderId, text, parameters) => {
       sendUrlMessage(senderId, activityData.name, activityData.path, activityData.img);
       break;
     case TagsIntences.tags:
+      users[senderId].tag = parameters.tags;
+      console.log(users[senderId]);
       if (Math.random() > 0.7) {
         sendTextMessage(senderId, randomSentence(sentences.expressionSentences_OK));
       }
       activityData = activity.activity(users[senderId].tag);
+      console.log(activityData);
       sendUrlMessage(senderId, activityData.name, activityData.path, activityData.img);
       break;
     case HappinesIntences.happinnes:
