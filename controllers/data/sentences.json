@@ -5,7 +5,7 @@
   "purpose_1_Questions": ["Co chciałbyś robić?", "Co?", "Powiedz, co masz na myśli"],
   "happines_Questions": ["Jak się masz?", "Jak się czujesz?", "W jakim jesteś humorze?", "Jak leci?"],
   "proposition_Questions": ["Co powiesz na to?", "Co o tym myślisz?", "Może to?"],
-  "after_approve": ["Cieszę się, że mogłem pomóc.", "Mam nadzieję, że będziesz się dobrze bawił.", "Baw się dobrze.", "Mam nadzieję, że miło spędzisz czas"],
+  "after_approve": ["Mam nadzieję, że będziesz się dobrze bawił.", "Baw się dobrze.", "Mam nadzieję, że miło spędzisz czas"],
   "grade_remind": ["Nie zapomnij ocenić mojego wyoboru.", "Pamiętaj aby ocenić wybór", "Proszę, po zakończeniu oceń wybór"],
-  "next_Question": ["Cieszę się, że mogłem pomóc"]
+  "next_Question": ["Dziękuję za ocenę. Cieszę się, że mogłem pomóc"]
 }
