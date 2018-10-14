@@ -15,9 +15,6 @@ const sendMessageToFlow = (event) => {
     const apiaiSession = apiAiClient.textRequest(translateMessage, {sessionId: "bogdan_bot"});
     apiaiSession.on("response", (response) => {
       const result = response.result.fulfillment.speech;
-      const date = response.result.parameters.date;
-      const happinnes = response.result.parameters.happinnes;
-      const tags = response.result.parameters.tags;
       sendResponse(senderId, result, response.result.parameters);
     });
     apiaiSession.on("error", error => console.log(error));
