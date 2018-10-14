@@ -20,6 +20,7 @@ const randomSentence = (sentences) => {
 
 exports.tell = (senderId, text, parameters) => {
   let activityData;
+  console.log(text);
   switch (text) {
     case Intences.meme:
       const meme = randomSentence(memes);
