@@ -3,16 +3,22 @@
         "id": "111",
         "lastEventId": "222",
         "options": {
-            "culture": { "val": 1.0, "rates": 10},
-            "popularity": { "val": 0.2, "rates": 10}
-        }
-    },
-    {
-        "id": "123",
-        "lastEventId": "333",
-        "options": {
-            "culture": { "val": 0.2, "rates": 10},
-            "popularity": { "val":0.5, "rates": 100}
+            "culture": {
+                "val":  0.3,
+                "rates": 2
+            },
+            "popularity": {
+                "val": 0.8,
+                "rates": 2
+            },
+            "luxury": {
+                "val": 0.4,
+                "rates": 2
+            },
+            "atmosfer": {
+                "val": 0.2,
+                "rates": 2
+            }
         }
     }
 ]

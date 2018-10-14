@@ -24,7 +24,7 @@ exports.reactivity = (placeTag, date, moodOption) => {
 
     moodOption = 0;
     const user = userDb.getUser("111")
-
+    
     const userOptions = {...user.options, mood: {val: moodOption} }
     const notLastActivities = activities.filter(activity => activity.name != user.lastEvent)
     const activitiesWithWantedTags = notLastActivities.filter(activity => activity.tags.includes(placeTag))
@@ -51,5 +51,5 @@ function scoreTag (userVal, activityVal) {
 }
 
 function nBests (data, n) {
-    return data.sort((a, b) => a.score > b.score).slice(0, n)
+    return data.sort((a, b) => a.score < b.score).slice(0, n)
 }
