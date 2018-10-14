@@ -23,6 +23,7 @@ exports.tell = (senderId, text, parameters) => {
   switch (text) {
     case Intences.meme:
       const meme = randomSentence(memes);
+      console.log("meme")
       sendUrlMessage(senderId, meme, meme, meme);
       break;
     case Intences.getEvents:
