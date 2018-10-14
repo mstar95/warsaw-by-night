@@ -2,7 +2,7 @@ const Intences = {getEvents: "intent_Event", getWeather: "intent_Weather"};
 const PurposeIntences = {purpose_accept: "purpose_accept", purpose_decline: "purpose_decline", purpose_proposition: "purpose_proposition"};
 const HappinesIntences = {happinnes: "happinnes"};
 const PropositionIntences = {proposition_disapprove: "proposition_disapprove", proposition_approve: "proposition_approve"};
-const TagsIntences = {tags: "tags"};
+const TagsIntences = {tags: "my_tags"};
 
 const sentences = require('./data/sentences');
 const activity = require('./activity');
