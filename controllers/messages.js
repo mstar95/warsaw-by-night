@@ -14,17 +14,27 @@ const sendResponse = (senderId, text, date, happinnes) => {
 const sendMessageToFlow = (event) => {
   const message = event.message.text;
   const senderId = event.sender.id;
-  translateController.translateText(message, 'en', (translateMessage) => {
-    const apiaiSession = apiAiClient.textRequest(translateMessage, {sessionId: "bogdan_bot"});
-    apiaiSession.on("response", (response) => {
-      const result = response.result.fulfillment.speech;
-      const date = response.result.parameters.date;
-      const happinnes = response.result.parameters.happinnes;
-      sendResponse(senderId, result, date, happinnes);
-    });
-    apiaiSession.on("error", error => console.log(error));
-    apiaiSession.end();
-  })
+  // translateController.translateText(message, 'en', (translateMessage) => {
+  //   const apiaiSession = apiAiClient.textRequest(translateMessage, {sessionId: "bogdan_bot"});
+  //   apiaiSession.on("response", (response) => {
+  //     const result = response.result.fulfillment.speech;
+  //     const date = response.result.parameters.date;
+  //     const happinnes = response.result.parameters.happinnes;
+  //     sendResponse(senderId, result, date, happinnes);
+  //   });
+  //   apiaiSession.on("error", error => console.log(error));
+  //   apiaiSession.end();
+  // })
+  //TO fix translates
+  const apiaiSession = apiAiClient.textRequest("asd", {sessionId: "bogdan_bot"});
+  apiaiSession.on("response", (response) => {
+    const result = response.result.fulfillment.speech;
+    const date = response.result.parameters.date;
+    const happinnes = response.result.parameters.happinnes;
+    sendResponse(senderId, "intent_Event", date, happinnes);
+  });
+  apiaiSession.on("error", error => console.log(error));
+  apiaiSession.end();
 };
 
 exports.message = (req, res) => {
