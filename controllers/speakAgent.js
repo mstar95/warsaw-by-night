@@ -1,6 +1,7 @@
 const Intences = {getEvents: "intent_Event", getWeather: "intent_Weather", meme: "meme"};
 const PurposeIntences = {purpose_accept: "purpose_accept", purpose_decline: "purpose_decline", purpose_proposition: "purpose_proposition"};
 const HappinesIntences = {happinnes: "happinnes"};
+const GradeIntences = {grade: "grade"};
 const PropositionIntences = {proposition_disapprove: "proposition_disapprove", proposition_approve: "proposition_approve"};
 const TagsIntences = {tags: "my_tag"};
 
@@ -23,7 +24,6 @@ exports.tell = (senderId, text, parameters) => {
   switch (text) {
     case Intences.meme:
       const meme = randomSentence(memes);
-      console.log(meme);
       sendUrlMessage(senderId, meme, meme, meme);
       break;
     case Intences.getEvents:
@@ -69,6 +69,15 @@ exports.tell = (senderId, text, parameters) => {
       sendTextMessage(senderId, randomSentence(sentences.expressionSentences_NOK));
       sendTextMessage(senderId, randomSentence(sentences.proposition_Questions));
       sendUrlMessage(senderId, activityData.name, activityData.path, activityData.img);
+      break;
+    case GradeIntences.grade:
+      if(parameters.grade > 0) {
+        sendTextMessage(senderId, randomSentence(sentences.expressionSentences_OK));
+      } else {
+        sendTextMessage(senderId, randomSentence(sentences.expressionSentences_NOK));
+      }
+      sendTextMessage(senderId, randomSentence(sentences.next_Question));
+      sendTextMessage(senderId, randomSentence(sentences.purpose_1_Questions));
       break;
     default:
       translateController.translateText(text, 'pl', (translateMessage) => {
