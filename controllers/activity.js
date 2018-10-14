@@ -3,10 +3,10 @@ const activities = require('./data/activity')
 //const request = require('./data/request')
 const userDb = require('./data/userDb')
 
-exports.activity = (placeTag) => {
+exports.activity = (placeTag, date, moodOption) => {
 
+    moodOption = 0;
     const user = userDb.getUser("111")
-    const moodOption = 0
 
     const userOptions = {...user.options, mood: {val: moodOption} }
 

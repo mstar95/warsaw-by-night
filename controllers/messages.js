@@ -1,14 +1,11 @@
 const API_AI_TOKEN = "f29b5e09eb8147a5b760513faf635c5d";
 const apiAiClient = require("apiai")(API_AI_TOKEN);
 
-const activity = require('./activity');
-
 const translateController = require("./translator");
 const speakAgent = require("./speakAgent");
 
-const sendResponse = (senderId, text, date, happinnes) => {
-  const activityData = activity.activity({});
-  speakAgent.tell(senderId, text, activityData);
+const sendResponse = (senderId, text, parameters) => {
+  speakAgent.tell(senderId, text, parameters);
 };
 
 const sendMessageToFlow = (event) => {
@@ -20,7 +17,8 @@ const sendMessageToFlow = (event) => {
       const result = response.result.fulfillment.speech;
       const date = response.result.parameters.date;
       const happinnes = response.result.parameters.happinnes;
-      sendResponse(senderId, result, date, happinnes);
+      const tags = response.result.parameters.tags;
+      sendResponse(senderId, result, response.result.parameters);
     });
     apiaiSession.on("error", error => console.log(error));
     apiaiSession.end();

@@ -2,19 +2,23 @@ const Intences = {getEvents: "intent_Event", getWeather: "intent_Weather"};
 const PurposeIntences = {purpose_accept: "purpose_accept", purpose_decline: "purpose_decline", purpose_proposition: "purpose_proposition"};
 const HappinesIntences = {happinnes: "happinnes"};
 const PropositionIntences = {proposition_disapprove: "proposition_disapprove", proposition_approve: "proposition_approve"};
+const TagsIntences = {tags: "tags"};
 
 const sentences = require('./data/sentences');
+const activity = require('./activity');
 
 const {sendTextMessage, sendUrlMessage} = require('./services/messageService');
 
 const translateController = require("./translator");
 
+const users = {};
 
 const randomSentence = (sentences) => {
   return sentences[Math.floor(Math.random()*sentences.length)]
 };
 
-exports.tell = (senderId, text, activityData) => {
+exports.tell = (senderId, text, parameters) => {
+  let activityData;
   switch (text) {
     case Intences.getEvents:
       sendTextMessage(senderId, randomSentence(sentences.purposeQuestions));
@@ -29,6 +33,7 @@ exports.tell = (senderId, text, activityData) => {
       sendTextMessage(senderId, randomSentence(sentences.purpose_1_Questions));
       break;
     case PurposeIntences.purpose_decline:
+      users[senderId] = {tag: "", mood: 0};
       if (Math.random() > 0.5) {
         sendTextMessage(senderId, randomSentence(sentences.expressionSentences_NOK));
       }
@@ -40,7 +45,13 @@ exports.tell = (senderId, text, activityData) => {
       }
       sendTextMessage(senderId, randomSentence(sentences.happines_Questions));
       break;
+    case TagsIntences.tags:
+      users[senderId] = {tag: parameters.tags, mood: 0};
+      sendTextMessage(senderId, randomSentence(sentences.happines_Questions));
+      break;
     case HappinesIntences.happinnes:
+      users[senderId].mood = 0;
+      activityData = activity.activity(users[senderId].tag);
       sendUrlMessage(senderId, activityData.name, activityData.path, activityData.img);
       sendTextMessage(senderId, randomSentence(sentences.proposition_Questions));
       break;
@@ -49,6 +60,8 @@ exports.tell = (senderId, text, activityData) => {
       sendTextMessage(senderId, randomSentence(sentences.grade_remind));
       break;
     case PropositionIntences.proposition_disapprove:
+      users[senderId].mood = 0;
+      activityData = activity.activity(users[senderId].tag);
       sendTextMessage(senderId, randomSentence(sentences.expressionSentences_NOK));
       sendTextMessage(senderId, randomSentence(sentences.proposition_Questions));
       sendUrlMessage(senderId, activityData.name, activityData.path, activityData.img);
