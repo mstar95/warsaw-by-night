@@ -10,9 +10,8 @@ exports.activity = (placeTag, date, moodOption) => {
     moodOption = 0;
     const user = userDb.getUser("111")
     const notVisitedActivities = activities.filter(activity => !user.lastEvents.includes(activity.name))
-   
     let activitiesWithWantedTags = notVisitedActivities.filter(activity => activity.tags.includes(placeTag))
-    if(activitiesWithWantedTags == []) {
+    if(activitiesWithWantedTags.length == 0) {
         activitiesWithWantedTags = notVisitedActivities
     }
     // Respond with 200 OK and challenge token from the request

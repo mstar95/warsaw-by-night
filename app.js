@@ -28,7 +28,7 @@ const feedbackController = require("./controllers/feedback");
 
 app.post('/activity',activityController.activity )
 //
-// console.log(activityController.activity("drink").name)
+// console.log(activityController.activity().name)
 // console.log(activityController.activity("drink").name)
 // console.log(activityController.activity("drink").name)
 // console.log(activityController.reactivity("drink", false).name)
